@@ -160,11 +160,11 @@
       });
     }
   }
-})({"jGWZY":[function(require,module,exports,__globalThis) {
+})({"9ihPh":[function(require,module,exports,__globalThis) {
 var global = arguments[3];
 var HMR_HOST = null;
 var HMR_PORT = null;
-var HMR_SERVER_PORT = 61416;
+var HMR_SERVER_PORT = 63708;
 var HMR_SECURE = false;
 var HMR_ENV_HASH = "439701173a9199ea";
 var HMR_USE_SSE = false;
@@ -668,7 +668,29 @@ function hmrAccept(bundle /*: ParcelRequire */ , id /*: string */ ) {
 
 },{}],"a0t4e":[function(require,module,exports,__globalThis) {
 console.log("test");
+// Отримати список користувачів з GitHub API Опис: Використайте публічне API 
+// GitHub для отримання списку користувачів. Зробіть GET-запит за 
+// адресою https://api.github.com/users та перегляньте отримані дані щодо 
+// користувачів.
+fetch("https://api.github.com/users").then((respons)=>{
+    return respons.json();
+}).then((data)=>{
+    makeUserList(data);
+}).catch((error)=>{
+    console.log(error);
+});
+function makeUserList(users) {
+    console.log(users);
+    const elements = users.map((user)=>`
+        <li class="user-item">
+            <p class="user-login">${user.login}</p>
+            <p class="user-id">${user.id}</p>
+        </li>
+    `).join("");
+    document.querySelector(".users-list").innerHTML = elements;
+    console.log(elements);
+}
 
-},{}]},["jGWZY","a0t4e"], "a0t4e", "parcelRequirea71f", {})
+},{}]},["9ihPh","a0t4e"], "a0t4e", "parcelRequirea71f", {})
 
 //# sourceMappingURL=github-users-list.31b563d9.js.map
